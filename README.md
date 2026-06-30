@@ -59,6 +59,19 @@ Selain menggunakan aturan bawaan, proyek ini berfokus pada implementasi aturan k
    * **Aturan:** `alert tcp any any -> any 80 (msg:"PERINGATAN: Pemindaian Direktori Web Dideteksi"; content:"dirb"; nocase; http_header; sid:1000005; rev:2;)`
 
 ### 🚀 Bukti Pengujian & Analisis Insiden
+# Kasus 2: Brute Force SSH
+Untuk menguji keandalan Snort IDS yang saya bangun, saya beralih dari pemindaian port dasar ke simulasi serangan taktis yang sering dihadapi oleh server produksi.
+
+#### 1. Mitigasi Serangan Brute Force SSH
+Saya mengonfigurasi aturan kustom menggunakan `detection_filter` untuk membedakan antara upaya login gagal yang normal dengan serangan brute force berbasis kecepatan.
+
+* **Skrip Aturan:** alert tcp any any -> any 22 (msg:"PERINGATAN: Potensi Brute Force SSH Dideteksi"; flags:S; detection_filter:track by_src, count 5, seconds 10; sid:1000004; rev:1;)
+
+<img width="1345" height="253" alt="SSH Brute Force" src="https://github.com/user-attachments/assets/6425efe9-85ef-4c0c-8dca-a88b82eed3ba" />
+
+* **Analisis:** Rule ini berhasil mereduksi *false positive* (alarm palsu) karena hanya akan aktif jika mendeteksi anomali berupa 5 kali percobaan koneksi dalam rentang 10 detik dari satu IP sumber.
+
+# Kasus 3: Web Directory Scanning
 Ketika mesin penyerang menjalankan perintah `dirb http://<IP_Server>`, konsol Snort di Linux Server langsung memicu *alert* secara *real-time*.
 
 <img width="1144" height="520" alt="dirb2" src="https://github.com/user-attachments/assets/b8da17f5-7b6c-45ae-8f0f-4b2eb08f9019" />
