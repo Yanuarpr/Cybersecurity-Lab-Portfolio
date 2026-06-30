@@ -31,7 +31,8 @@ In addition to community rules, this project focuses on implementing custom sign
 ### 🚀 Proof of Concept & Incident Analysis
 When the attacker machine executes `dirb http://<Target_IP>`, the Snort console on the Linux Server immediately triggers real-time alerts.
 
-<img width="1331" height="335" alt="Nmap Port Scanning2" src="https://github.com/user-attachments/assets/aec5571f-4194-4a5f-b775-d17e4e8ca30f" />
+<img width="1144" height="520" alt="DIRB" src="https://github.com/user-attachments/assets/242365de-97eb-47bb-bea7-45ca0244f357" />
+
 
 **Log Analysis:** The system successfully flagged the reconnaissance activity because it matched specific string contents within the HTTP Header during high-frequency requests. This gives security analysts full visibility to perform further mitigation (e.g., IP blocking).
 
@@ -60,7 +61,8 @@ Selain menggunakan aturan bawaan, proyek ini berfokus pada implementasi aturan k
 ### 🚀 Bukti Pengujian & Analisis Insiden
 Ketika mesin penyerang menjalankan perintah `dirb http://<IP_Server>`, konsol Snort di Linux Server langsung memicu *alert* secara *real-time*.
 
-<img width="1331" height="335" alt="Nmap Port Scanning" src="https://github.com/user-attachments/assets/8b7a7845-377a-4faa-b8ec-2dd926b48c7e" />
+<img width="1144" height="520" alt="dirb2" src="https://github.com/user-attachments/assets/b8da17f5-7b6c-45ae-8f0f-4b2eb08f9019" />
+
 
 **Analisis Log:** Sistem berhasil mengidentifikasi aktivitas pemindaian karena adanya kecocokan konten spesifik pada *HTTP Header* selama permintaan berfrekuensi tinggi ke server web. Ini memberikan visibilitas penuh kepada analis keamanan untuk melakukan tindakan mitigasi lebih lanjut.
 
